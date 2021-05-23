@@ -7,15 +7,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sp.SpringH.entities.User;
-import com.sp.SpringH.repository.JPATemplate;
+//import com.sp.SpringH.repository.JPATemplate;
 
 @Repository
-public class UserRepository extends JPATemplate{
+public class UserRepository {
+	
+	@Autowired
+    private SessionFactory sessionFactory;
+	private Session getSession() {
+        Session session = null;
+        try {
+            session = sessionFactory.getCurrentSession();
+        } catch (Exception e) {
+            session = sessionFactory.openSession();
+        }
+        return session;
+    }
+	
 //	private User user;
 	String sql = null;
 //	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -27,7 +42,7 @@ public class UserRepository extends JPATemplate{
 		System.out.println("進了DAO create user");
 //		Boolean result = false;
 		System.out.println(user);
-        session.persist(user);
+		getSession().persist(user);
 
         //		return result;
 	}

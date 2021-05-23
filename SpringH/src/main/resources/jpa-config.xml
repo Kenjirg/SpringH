@@ -33,7 +33,7 @@
         <!-- Entity 物件的存放位置 -->
         <property name="packagesToScan">
             <list>
-                <value>com.sp.springh.entities</value>
+                <value>com.sp.SpringH.entities</value>
             </list>
         </property>
         <!-- 設定 Hibernate 的相關屬性 -->

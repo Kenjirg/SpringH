@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.Before;
+import org.junit.After;
+
 
 public class JPATemplate {
 	private ClassPathXmlApplicationContext ctx;
@@ -11,7 +14,7 @@ public class JPATemplate {
     protected Session session;
     private Transaction trans;
     
-    @org.junit.Before
+    @Before
     public void Before() {
     	ctx = new ClassPathXmlApplicationContext("jpa-config.xml");
     	
@@ -23,7 +26,7 @@ public class JPATemplate {
         trans = session.beginTransaction();
     }
 	
-	@org.junit.After
+	@After
     public void After() {
 		trans.commit(); // 提交
         sessionFactory.close(); // 關閉

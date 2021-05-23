@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import com.sp.SpringH.entities.User;
 
-@Repository
+//@Repository
 public class TestH extends JPATemplate{
 	
-	@Test
-	public void testH() {
-        
-	}
-	
 //	@Test
+//	public void testH() {
+//        
+//	}
+	
+	@Test
 	public void create() {
 		User user=new User();
         user.setUsername("h1");
